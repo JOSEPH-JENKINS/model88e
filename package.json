@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-starter-prismic-minimal",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Prismic <contact@prismic.io> (https://prismic.io)",
+  "scripts": {
+    "dev": "nuxt dev",
+    "nuxt:dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "slicemachine": "start-slicemachine",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^1.0.0",
+    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxtjs/apollo": "^5.0.0-alpha.10",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.52.0",
+    "nuxt": "^3.8.0"
+  },
+  "dependencies": {
+    "@storyblok/nuxt": "^5.7.9"
+  }
+}
