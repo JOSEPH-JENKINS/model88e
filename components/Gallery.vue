@@ -14,14 +14,14 @@ export default {
   data() {
     return {
       images: [
-        "/29960038.jpg",
-        "/29980028.jpg",
-        "/29950003.jpg",
-        "/29960027.jpg",
-        "/29980035.jpg",
-        "/000408180019.jpg",
-        "/000408180021.jpg",
-        "/000408190017.jpg",
+        "29960038.jpg",
+        "29980028.jpg",
+        "29950003.jpg",
+        "29960027.jpg",
+        "29980035.jpg",
+        "000408180019.jpg",
+        "000408180021.jpg",
+        "000408190017.jpg",
       ],
       count: 0,
     };
@@ -45,11 +45,11 @@ export default {
 
       imageBox.forEach((box) => {
         box.addEventListener("mouseover", () => {
-          box.children[0].src = this.getNextImage();
+          box.children[0].src = `/${this.getNextImage()}`;
         });
 
         box.addEventListener("click", () => {
-          box.children[0].src = this.getNextImage();
+          box.children[0].src = `/${this.getNextImage()}`;
         });
       });
     },
