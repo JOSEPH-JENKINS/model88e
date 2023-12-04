@@ -1,7 +1,13 @@
 <template>
   <section>
     <div class="product---page---img">
-      <img :src="data.productByHandle.images.edges[0].node.src" />
+      <!-- <img :src="data.productByHandle.images.edges[0].node.src" /> -->
+
+      <img
+        v-for="image in data.productByHandle.images.edges"
+        :key="image.node.src"
+        :src="image.node.src"
+      />
     </div>
     <div class="product---actions">
       <div class="main---actions">
@@ -47,7 +53,8 @@ const redirectToPayment = async (e) => {
   const product = await useAsyncQuery(createCheckoutMutation, {
     variantId: data.value.productByHandle.variants.edges[0].node.id,
   });
-  window.location.href = product.data.value.checkoutCreate.checkout.webUrl;
+  console.log(product);
+  // window.location.href = product.data.value.checkoutCreate.checkout.webUrl;
 };
 </script>
 

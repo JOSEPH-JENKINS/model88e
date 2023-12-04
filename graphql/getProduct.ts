@@ -11,14 +11,14 @@ export const getProductQuery = gql`
         }
       }
       description
-      images(first: 1) {
+      images(first: 5) {
         edges {
           node {
             src
           }
         }
       }
-      variants(first: 1) {
+      variants(first: 5) {
         edges {
           node {
             id

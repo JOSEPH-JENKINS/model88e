@@ -21,6 +21,6 @@
 <script setup>
 import { getProductsQuery } from "../graphql/getProducts";
 
-const variables = { first: 3 };
+const variables = { first: 100 };
 const { data } = await useAsyncQuery(getProductsQuery, variables);
 </script>

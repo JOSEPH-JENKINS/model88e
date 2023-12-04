@@ -22,7 +22,7 @@ a {
 .nav---button {
   display: inline-flex;
   padding: 5px 10px;
-  background: #0e0e0e;
+  background: #121212;
   border-radius: 100px;
   border: none;
   cursor: pointer;
@@ -99,10 +99,9 @@ a {
 }
 
 .logo {
-  height: 30px;
+  height: 20px;
   width: auto;
   position: fixed;
-  margin-top: 5px;
   left: 50%;
   transform: translate(-50%, 0);
 }
@@ -118,7 +117,12 @@ a {
     margin-top: 0;
     top: 50%;
     left: 20px;
+    height: 30px;
     transform: translate(0px, -100%);
+  }
+  .logo.shop {
+    top: 10px;
+    transform: translate(0, 0);
   }
 }
 
@@ -198,20 +202,18 @@ a {
 }
 
 .shop---head {
-  padding-top: 40px;
+  padding-top: 20px;
   text-align: center;
 }
 
 @media (min-width: 768px) {
   .shop---head {
-    padding-top: 20px;
+    padding-top: 10px;
   }
 }
 
 .product---image {
-  height: 350px;
   width: 100%;
-  background: #c3c3c3;
 }
 
 .product---image img {
@@ -220,14 +222,18 @@ a {
   object-fit: cover;
 }
 
+.product---head {
+  margin-top: 4px;
+}
+
 .product---head---text {
-  font-size: 20px;
+  font-size: 18px;
   font-family: "Inter";
   font-style: normal;
   line-height: 100%;
-  letter-spacing: -0.07em;
-  color: #000;
-  font-weight: bold;
+  letter-spacing: -0.05em;
+  color: #696969;
+  font-weight: 600;
 }
 
 .shop---products {
@@ -240,13 +246,9 @@ a {
   margin-bottom: 4px;
 }
 
-.product---image:nth-of-type(even) {
-  height: 240px;
-}
-
 @media (min-width: 768px) {
   .product---card {
-    grid-column: span 4;
+    grid-column: span 3;
   }
 }
 
@@ -324,6 +326,14 @@ a {
 
 .second---image img {
   align-self: flex-end;
+}
+
+.product---card {
+  transition: all 0.3s cubic-bezier(0.82, 0.9, 0.58, 1);
+}
+
+.product---card:hover .product---head---text {
+  color: #000;
 }
 
 @media (min-width: 768px) {
