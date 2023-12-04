@@ -99,10 +99,11 @@ a {
 }
 
 .logo {
-  height: 20px;
+  height: 25px;
   width: auto;
   position: fixed;
   left: 50%;
+  margin-top: 5px;
   transform: translate(-50%, 0);
 }
 
@@ -195,7 +196,7 @@ a {
   font-family: "Playfair";
   font-style: normal;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 100%;
   letter-spacing: -0.07em;
   color: #000000;
