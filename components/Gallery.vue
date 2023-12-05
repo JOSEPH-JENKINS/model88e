@@ -1,32 +1,25 @@
 <template>
   <div class="gallery">
     <div class="first---image image---box">
-      <img :src="'/29960038.jpg'" alt="G" />
+      <img :src="'29960027.jpg'" alt="G" />
     </div>
     <div class="second---image image---box">
-      <img :src="'/29960038.jpg'" alt="G" />
+      <img :src="'29960027.jpg'" alt="G" />
     </div>
   </div>
 </template>
 
 <script>
+import { createClient } from "contentful";
 export default {
   data() {
     return {
-      images: [
-        "29960038.jpg",
-        "29980028.jpg",
-        "29950003.jpg",
-        "29960027.jpg",
-        "29980035.jpg",
-        "000408180019.jpg",
-        "000408180021.jpg",
-        "000408190017.jpg",
-      ],
+      images: [],
       count: 0,
     };
   },
   mounted() {
+    this.loadImages();
     this.addImageEventListeners();
   },
   methods: {
@@ -45,11 +38,24 @@ export default {
 
       imageBox.forEach((box) => {
         box.addEventListener("mouseover", () => {
-          box.children[0].src = `/${this.getNextImage()}`;
+          box.children[0].src = `${this.getNextImage()}`;
         });
 
         box.addEventListener("click", () => {
           box.children[0].src = `/${this.getNextImage()}`;
+        });
+      });
+    },
+    loadImages() {
+      const client = createClient({
+        space: "ill4609f6jw1",
+        accessToken: "nXeiaTRVAzeqvXDfYrLaC-eGKtmcaDWNFOc2pTf1psI",
+      });
+      client.getAssets().then((assets) => {
+        assets.items.map((image) => {
+          let imageURL = `https:${image.fields.file.url}`;
+          this.images.push(imageURL);
+          console.log("done");
         });
       });
     },

@@ -49,7 +49,6 @@ const price = computed(
 );
 
 const redirectToPayment = async (e) => {
-  e.preventDefault();
   const product = await useAsyncQuery(createCheckoutMutation, {
     variantId: data.value.productByHandle.variants.edges[0].node.id,
   });

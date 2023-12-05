@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@storyblok/nuxt", "@nuxtjs/apollo"],
+  modules: ["@nuxtjs/apollo"],
 
   css: ["~/assets/styles/globals.css"],
 
@@ -34,9 +34,5 @@ export default defineNuxtConfig({
         },
       },
     },
-  },
-
-  storyblok: {
-    accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   },
 });

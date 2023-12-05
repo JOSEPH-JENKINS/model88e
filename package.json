@@ -18,11 +18,10 @@
     "@nuxt/devtools": "^1.0.0",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/apollo": "^5.0.0-alpha.10",
-    "concurrently": "^8.2.2",
     "eslint": "^8.52.0",
     "nuxt": "^3.8.0"
   },
   "dependencies": {
-    "@storyblok/nuxt": "^5.7.9"
+    "contentful": "^10.6.14"
   }
 }
