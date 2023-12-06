@@ -2,10 +2,6 @@
 export default defineNuxtConfig({
   devtools: true,
 
-  alias: {
-    contentful: "contentful/dist/contentful.browser.js",
-  },
-
   app: {
     head: {
       title: "Model88E",
