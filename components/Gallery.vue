@@ -1,10 +1,10 @@
 <template>
   <div class="gallery">
     <div class="first---image image---box">
-      <img :src="'29960027.jpg'" alt="G" />
+      <img :src="this.images[0]" alt="G" />
     </div>
     <div class="second---image image---box">
-      <img :src="'29960027.jpg'" alt="G" />
+      <img :src="this.images[0]" alt="G" />
     </div>
   </div>
 </template>
