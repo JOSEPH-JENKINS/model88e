@@ -41,7 +41,7 @@ export default {
         });
 
         box.addEventListener("click", () => {
-          box.children[0].src = `/${this.getNextImage()}`;
+          box.children[0].src = `${this.getNextImage()}`;
         });
       });
     },
@@ -52,7 +52,6 @@ export default {
         assets.items.map((image) => {
           let imageURL = `https:${image.fields.file.url}`;
           this.images.push(imageURL);
-          console.log("done");
           console.log(this.images);
         });
       });
