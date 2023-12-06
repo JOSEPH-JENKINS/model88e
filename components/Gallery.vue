@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import * as contentful from "contentful";
 export default {
   data() {
     return {
@@ -47,15 +46,14 @@ export default {
       });
     },
     loadImages() {
-      const client = contentful.createClient({
-        space: "ill4609f6jw1",
-        accessToken: "nXeiaTRVAzeqvXDfYrLaC-eGKtmcaDWNFOc2pTf1psI",
-      });
-      client.getAssets().then((assets) => {
+      const { $contentfulClient } = useNuxtApp();
+
+      $contentfulClient.getAssets().then((assets) => {
         assets.items.map((image) => {
           let imageURL = `https:${image.fields.file.url}`;
           this.images.push(imageURL);
           console.log("done");
+          console.log(this.images);
         });
       });
     },
