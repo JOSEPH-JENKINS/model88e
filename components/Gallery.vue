@@ -1,10 +1,16 @@
 <template>
   <div class="gallery">
     <div class="first---image image---box">
-      <img :src="this.images[0]" alt="G" />
+      <img
+        src="https://images.ctfassets.net/ill4609f6jw1/2eqAPjViYWYXRf86hVKWBX/1fdff9186e051931c13f80055492e61d/29980035.JPG"
+        alt="G"
+      />
     </div>
     <div class="second---image image---box">
-      <img :src="this.images[0]" alt="G" />
+      <img
+        src="https://images.ctfassets.net/ill4609f6jw1/2eqAPjViYWYXRf86hVKWBX/1fdff9186e051931c13f80055492e61d/29980035.JPG"
+        alt="G"
+      />
     </div>
   </div>
 </template>
