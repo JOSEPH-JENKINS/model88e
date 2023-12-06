@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { createClient } from "contentful";
+import * as contentful from "contentful";
 export default {
   data() {
     return {
@@ -47,7 +47,7 @@ export default {
       });
     },
     loadImages() {
-      const client = createClient({
+      const client = contentful.createClient({
         space: "ill4609f6jw1",
         accessToken: "nXeiaTRVAzeqvXDfYrLaC-eGKtmcaDWNFOc2pTf1psI",
       });
