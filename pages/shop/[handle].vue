@@ -49,21 +49,16 @@ const price = computed(
 );
 
 const redirectToPayment = async (e) => {
-  const product = await useAsyncQuery(createCheckoutMutation, {
-    variantId: data.value.productByHandle.variants.edges[0].node.id,
-  });
-  console.log(product);
+  const variant = data.value.productByHandle.id;
+  const variables = { variantId: `"${variant}"` };
+  const product = await useMutation(createCheckoutMutation, variables);
+  const { mutate } = product;
+  console.log(mutate());
   // window.location.href = product.data.value.checkoutCreate.checkout.webUrl;
 };
-</script>
 
-<script>
-export default {
-  methods: {
-    descFunction() {
-      const desc_box = document.querySelector(".desc---modal");
-      desc_box.classList.toggle("open");
-    },
-  },
+const descFunction = () => {
+  const desc_box = document.querySelector(".desc---modal");
+  desc_box.classList.toggle("open");
 };
 </script>
