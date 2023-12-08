@@ -50,7 +50,7 @@ const price = computed(
 
 const redirectToPayment = async (e) => {
   const variant = data.value.productByHandle.id;
-  const variables = { variantId: `"${variant}"` };
+  const variables = { lineItems: [{ variantId: variant, quantity: 1 }] };
   const product = await useMutation(createCheckoutMutation, variables);
   const { mutate } = product;
   console.log(mutate());
