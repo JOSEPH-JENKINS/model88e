@@ -14,7 +14,6 @@
         :image="product.node.images.edges[0].node.src"
       />
     </section>
-    <About />
   </section>
 </template>
 

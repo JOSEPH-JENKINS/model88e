@@ -49,11 +49,11 @@ const price = computed(
 );
 
 const redirectToPayment = async (e) => {
-  const variant = data.value.productByHandle.id;
+  const variant = data.value.productByHandle.variants.edges[0].node.id;
   const variables = { lineItems: [{ variantId: variant, quantity: 1 }] };
   const product = await useMutation(createCheckoutMutation, variables);
   const { mutate } = product;
-  console.log(mutate());
+  console.log(mutate.call());
   // window.location.href = product.data.value.checkoutCreate.checkout.webUrl;
 };
 
