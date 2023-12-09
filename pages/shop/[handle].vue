@@ -4,7 +4,7 @@
       <!-- <img :src="data.productByHandle.images.edges[0].node.src" /> -->
 
       <img
-        v-for="image in data.productByHandle.images.edges"
+        v-for="image in product.productByHandle.images.edges"
         :key="image.node.src"
         :src="image.node.src"
       />
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="desc---modal">
-        <h2 class="about---text">{{ data.productByHandle.description }}</h2>
+        <h2 class="about---text">{{ product.productByHandle.description }}</h2>
       </div>
     </div>
     <!-- <h1>{{ price }}</h1> -->
@@ -40,21 +40,30 @@ import { createCheckoutMutation } from "../../graphql/createCheckoutMutation";
 import { getProductQuery } from "../../graphql/getProduct";
 const route = useRoute();
 
-const { data } = await useAsyncQuery(getProductQuery, {
+const { data: product } = await useAsyncQuery(getProductQuery, {
   handle: route.params.handle,
 });
 
 const price = computed(
-  () => `$${data.value.productByHandle.priceRange.maxVariantPrice.amount}`
+  () => `$${product.value.productByHandle.priceRange.maxVariantPrice.amount}`
 );
 
 const redirectToPayment = async (e) => {
-  const variant = data.value.productByHandle.variants.edges[0].node.id;
-  const variables = { lineItems: [{ variantId: variant, quantity: 1 }] };
-  const product = await useMutation(createCheckoutMutation, variables);
-  const { mutate } = product;
-  console.log(mutate.call());
-  // window.location.href = product.data.value.checkoutCreate.checkout.webUrl;
+  try {
+    const apolloClient = useApolloClient();
+
+    const result = await apolloClient.client.mutate({
+      mutation: createCheckoutMutation,
+      variables: {
+        variantId: product.value.productByHandle.variants.edges[0].node.id,
+      },
+    });
+
+    window.location.href = result.data.checkoutCreate.checkout.webUrl;
+    // console.log(result.data.checkoutCreate.checkout);
+  } catch (error) {
+    console.error("Error:", error);
+  }
 };
 
 const descFunction = () => {

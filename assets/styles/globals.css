@@ -65,6 +65,18 @@ a {
   z-index: 9999;
 }
 
+.nav---container.contact {
+  bottom: 65px;
+  opacity: 0;
+  transform: translate(-50%, 300px);
+}
+
+.nav---container.contact.open {
+  bottom: 65px;
+  opacity: 1;
+  transform: translate(-50%, 0px);
+}
+
 .nav---button,
 .nav---text,
 .nav---container {

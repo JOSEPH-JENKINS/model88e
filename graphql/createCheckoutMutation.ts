@@ -1,16 +1,10 @@
 export const createCheckoutMutation = gql`
-  mutation checkoutCreate($input: CheckoutCreateInput!) {
+  mutation Checkout($variantId: ID!) {
     checkoutCreate(
-      input: $input
+      input: { lineItems: { variantId: $variantId, quantity: 1 } }
     ) {
       checkout {
-        id
         webUrl
-      }
-      checkoutUserErrors {
-        code
-        field
-        message
       }
     }
   }
