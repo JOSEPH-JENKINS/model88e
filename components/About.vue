@@ -28,6 +28,13 @@ export default {
     this.addEventListeners(document.querySelector("#about"));
   },
   methods: {
+    getAboutText() {
+      const { $contentfulClient } = useNuxtApp();
+
+      $contentfulClient
+        .getEntry(process.env.ABOUT_IDENTIFIER)
+        .then((entry) => console.log(entry));
+    },
     mouseDownEventListener(element) {
       element.addEventListener("mousedown", (e) => {
         this.isDragging = true;
