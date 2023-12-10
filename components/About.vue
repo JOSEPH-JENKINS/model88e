@@ -4,9 +4,7 @@
     id="about"
   >
     <h2 class="about---text">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
-      rerum consectetur eos, suscipit eveniet qui fuga quae a deserunt
-      repellendus, aut nihil harum soluta? Voluptate?
+      <span v-for="paragraph in this.aboutText">{{ paragraph }} </span>
     </h2>
   </div>
 </template>
@@ -22,6 +20,7 @@ export default {
       offsetY: 0,
       mouseX: 0,
       mouseY: 0,
+      aboutText: null,
     };
   },
   mounted() {
@@ -32,9 +31,9 @@ export default {
     getAboutText() {
       const { $contentfulClient } = useNuxtApp();
 
-      $contentfulClient
-        .getEntry("6JMUVxmhmXV8pJPqMjJWAl")
-        .then((entry) => console.log(entry));
+      $contentfulClient.getEntry("6JMUVxmhmXV8pJPqMjJWAl").then((entry) => {
+        this.aboutText = entry.fields.content.content;
+      });
     },
     mouseDownEventListener(element) {
       element.addEventListener("mousedown", (e) => {
