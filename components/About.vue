@@ -3,8 +3,8 @@
     :class="useAboutSection().value ? 'about---modal open' : 'about---modal'"
     id="about"
   >
-    <h2 class="about---text">
-      <span v-for="paragraph in aboutText">{{ paragraph.content.value }} </span>
+    <h2 v-for="paragraph in aboutText" class="about---text">
+      {{ paragraph.content.value }}
     </h2>
   </div>
 </template>
@@ -34,6 +34,8 @@ export default {
       $contentfulClient.getEntry("6JMUVxmhmXV8pJPqMjJWAl").then((entry) => {
         this.aboutText = entry.fields.content.content;
       });
+
+      console.log(this.aboutText);
     },
     mouseDownEventListener(element) {
       element.addEventListener("mousedown", (e) => {
