@@ -58,7 +58,6 @@ export default {
         assets.items.map((image) => {
           let imageURL = `https:${image.fields.file.url}`;
           this.images.push(imageURL);
-          console.log(this.images);
         });
       });
     },
