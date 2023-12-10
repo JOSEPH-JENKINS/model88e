@@ -32,7 +32,7 @@ export default {
       const { $contentfulClient } = useNuxtApp();
 
       $contentfulClient
-        .getEntry(process.env.ABOUT_IDENTIFIER)
+        .getEntry("6JMUVxmhmXV8pJPqMjJWAl")
         .then((entry) => console.log(entry));
     },
     mouseDownEventListener(element) {
