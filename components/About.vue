@@ -4,7 +4,9 @@
     id="about"
   >
     <h2 class="about---text">
-      <span v-for="paragraph in this.aboutText">{{ paragraph }} </span>
+      <span v-for="paragraph in this.aboutText"
+        >{{ paragraph.content.value }}
+      </span>
     </h2>
   </div>
 </template>
