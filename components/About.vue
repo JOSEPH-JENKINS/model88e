@@ -20,7 +20,7 @@ export default {
       offsetY: 0,
       mouseX: 0,
       mouseY: 0,
-      aboutText: null,
+      aboutText: [],
     };
   },
   mounted() {
@@ -32,7 +32,11 @@ export default {
       const { $contentfulClient } = useNuxtApp();
 
       $contentfulClient.getEntry("6JMUVxmhmXV8pJPqMjJWAl").then((entry) => {
-        this.aboutText = entry.fields.content.content;
+        const data = entry.fields.content.content;
+
+        data.map((paragraph) => this.aboutText.push(paragraph));
+
+        console.log(this.aboutText);
       });
 
       console.log(this.aboutText);
