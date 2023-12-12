@@ -1,10 +1,10 @@
 <template>
   <div class="gallery">
     <div class="first---image image---box">
-      <img src="" alt="G" />
+      <img src="" alt="Loading..." />
     </div>
     <div class="second---image image---box">
-      <img src="" alt="G" />
+      <img src="" alt="Loading..." />
     </div>
   </div>
 </template>
