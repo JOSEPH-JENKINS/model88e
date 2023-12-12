@@ -59,6 +59,10 @@ export default defineNuxtConfig({
 
   modules: ["@nuxtjs/apollo"],
 
+  image: {
+    domains: ["cdn.shopify.com", "images.ctfassets.net"],
+  },
+
   css: ["~/assets/styles/globals.css"],
 
   apollo: {

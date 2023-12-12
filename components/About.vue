@@ -4,7 +4,7 @@
     id="about"
   >
     <h2 v-for="paragraph in aboutText" class="about---text">
-      {{ paragraph.content.value }}
+      {{ paragraph }}
     </h2>
   </div>
 </template>
@@ -32,14 +32,15 @@ export default {
       const { $contentfulClient } = useNuxtApp();
 
       $contentfulClient.getEntry("6JMUVxmhmXV8pJPqMjJWAl").then((entry) => {
-        const data = entry.fields.content.content;
+        const { content } = entry.fields.content;
+        content.forEach((data) => {
+          data.content.forEach((paragraph) => {
+            const value = paragraph.value;
 
-        data.map((paragraph) => this.aboutText.push(paragraph));
-
-        console.log(this.aboutText);
+            this.aboutText.push(value);
+          });
+        });
       });
-
-      console.log(this.aboutText);
     },
     mouseDownEventListener(element) {
       element.addEventListener("mousedown", (e) => {
