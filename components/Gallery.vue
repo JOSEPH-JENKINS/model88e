@@ -50,7 +50,7 @@ export default {
 
       $contentfulClient.getAssets().then((assets) => {
         assets.items.map((image) => {
-          let imageURL = `https:${image.fields.file.url}`;
+          const imageURL = `https:${image.fields.file.url}`;
           this.images.push(imageURL);
         });
 

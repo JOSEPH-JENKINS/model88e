@@ -45,8 +45,8 @@ export default {
     mouseDownEventListener(element) {
       element.addEventListener("mousedown", (e) => {
         this.isDragging = true;
-        this.posX = e.clientX - element.offsetLeft;
-        this.posY = e.clientY - element.offsetTop;
+        this.posX = e.clientX - parseInt(window.getComputedStyle(element).left);
+        this.posY = e.clientY - parseInt(window.getComputedStyle(element).top);
         window.addEventListener(
           "mousemove",
           () => {
@@ -58,13 +58,31 @@ export default {
     },
     mouseMoveEventListener(element) {
       element.addEventListener("mousemove", (e) => {
-        // e.preventDefault();
-        console.log("yeah");
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const computedStyle = window.getComputedStyle(element);
+        const elementWidth = parseInt(computedStyle.width);
+        const elementHeight = parseInt(computedStyle.height);
+
         if (this.isDragging) {
-          this.mouseX = e.clientX - this.posX;
-          this.mouseY = e.clientY - this.posY;
-          element.style.left = this.mouseX + "px";
-          element.style.top = this.mouseY + "px";
+          let posX = e.clientX - this.posX;
+          let posY = e.clientY - this.posY;
+
+          // Check if the element is within the window boundaries
+          if (posX < 0) {
+            posX = 0;
+          } else if (posX + elementWidth > windowWidth) {
+            posX = windowWidth - elementWidth;
+          }
+
+          if (posY < 0) {
+            posY = 0;
+          } else if (posY + elementHeight > windowHeight) {
+            posY = windowHeight - elementHeight;
+          }
+
+          element.style.left = posX + "px";
+          element.style.top = posY + "px";
         }
       });
     },
