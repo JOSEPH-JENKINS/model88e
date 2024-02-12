@@ -34,7 +34,7 @@
           class="variant other---text"
           @click="selectVariant(index, $event)"
         >
-          {{ variant.node.id }}
+          {{ variant.node.title }}
         </button>
       </div>
       <div class="desc---modal">
