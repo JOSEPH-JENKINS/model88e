@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/html-self-closing -->
 <template>
   <section>
     <div class="product---page---img">
@@ -27,15 +28,30 @@
           </button>
         </div>
       </div>
-      <div class="variant-options" v-if="displayVariants">
-        <button
-          v-for="(variant, index) in displayVariants"
-          :key="index"
-          class="variant other---text"
-          @click="selectVariant(index, $event)"
-        >
-          {{ variant.node.title }}
-        </button>
+      <div class="more---options">
+        <div class="variant-options" v-if="displayVariants">
+          <button
+            v-for="(variant, index) in displayVariants"
+            :key="index"
+            class="variant other---text"
+            @click="selectVariant(index, $event)"
+          >
+            {{ variant.node.title }}
+          </button>
+        </div>
+        <div class="quantity">
+          <label for="quantityInt" class="other---text">Quantity</label>
+          <input
+            id="quantityInt"
+            type="number"
+            placeholder="Quantity"
+            value="1"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            min="1"
+            @input="updateQuantity($event)"
+          />
+        </div>
       </div>
       <div class="desc---modal">
         <h2 class="about---text">{{ product.productByHandle.description }}</h2>
@@ -61,6 +77,11 @@ if (variants.length > 1) {
 }
 
 let selectedVariantIndex = 0;
+let quantity = 1;
+
+const updateQuantity = (e) => {
+  quantity = e.target.value;
+};
 
 const price = computed(
   () => `$${product.value.productByHandle.priceRange.maxVariantPrice.amount}`
@@ -90,6 +111,7 @@ const redirectToPayment = async (e) => {
         variantId:
           product.value.productByHandle.variants.edges[selectedVariantIndex]
             .node.id,
+        quantity: parseInt(quantity),
       },
     });
 

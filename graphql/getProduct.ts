@@ -22,6 +22,7 @@ export const getProductQuery = gql`
         edges {
           node {
             id
+            title
           }
         }
       }
