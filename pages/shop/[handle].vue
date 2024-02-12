@@ -27,11 +27,20 @@
           </button>
         </div>
       </div>
+      <div class="variant-options" v-if="displayVariants">
+        <button
+          v-for="(variant, index) in displayVariants"
+          :key="index"
+          class="variant other---text"
+          @click="selectVariant(index, $event)"
+        >
+          {{ variant.node.id }}
+        </button>
+      </div>
       <div class="desc---modal">
         <h2 class="about---text">{{ product.productByHandle.description }}</h2>
       </div>
     </div>
-    <!-- <h1>{{ price }}</h1> -->
   </section>
 </template>
 
@@ -44,9 +53,32 @@ const { data: product } = await useAsyncQuery(getProductQuery, {
   handle: route.params.handle,
 });
 
+const variants = product.value.productByHandle.variants.edges;
+let displayVariants = null;
+
+if (variants.length > 1) {
+  displayVariants = variants;
+}
+
+let selectedVariantIndex = 0;
+
 const price = computed(
   () => `$${product.value.productByHandle.priceRange.maxVariantPrice.amount}`
 );
+
+const removeSelectedClass = () => {
+  const variantsButton = document.querySelectorAll(".variant");
+
+  variantsButton.forEach((button) => {
+    button.classList.remove("selected");
+  });
+};
+
+const handleButtonClickedStyle = (e) => {
+  removeSelectedClass();
+
+  e.target.classList.add("selected");
+};
 
 const redirectToPayment = async (e) => {
   try {
@@ -55,7 +87,9 @@ const redirectToPayment = async (e) => {
     const result = await apolloClient.client.mutate({
       mutation: createCheckoutMutation,
       variables: {
-        variantId: product.value.productByHandle.variants.edges[0].node.id,
+        variantId:
+          product.value.productByHandle.variants.edges[selectedVariantIndex]
+            .node.id,
       },
     });
 
@@ -69,5 +103,10 @@ const redirectToPayment = async (e) => {
 const descFunction = () => {
   const desc_box = document.querySelector(".desc---modal");
   desc_box.classList.toggle("open");
+};
+
+const selectVariant = (index, e) => {
+  handleButtonClickedStyle(e);
+  selectedVariantIndex = index;
 };
 </script>

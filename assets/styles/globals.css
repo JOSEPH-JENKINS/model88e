@@ -36,14 +36,20 @@ a {
   color: #fff;
 }
 
-.nav---text {
+.nav---text,
+.other---text {
   font-family: "Inter";
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
   line-height: 100%;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.04215em;
   color: #696969;
+}
+
+.other---text {
+  font-weight: medium;
+  font-size: 14px;
 }
 
 .nav {
@@ -145,9 +151,9 @@ a {
   padding: 20px;
   width: 280px;
   position: fixed;
-  top: 50%;
+  bottom: 40px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -40px);
   background: linear-gradient(
     180deg,
     rgba(227, 227, 227, 0.3) 0%,
@@ -159,7 +165,7 @@ a {
 
 .desc---modal {
   display: none;
-  width: 280px;
+  width: 340px;
   border-radius: 20px;
   padding: 20px;
   background: #8a8a8a;
@@ -184,8 +190,8 @@ a {
   font-weight: 600;
   font-size: 18px;
   line-height: 100%;
-  letter-spacing: -0.05em;
-  color: #252525;
+  letter-spacing: -0.04215em;
+  color: #000;
   user-select: none;
 }
 
@@ -211,7 +217,7 @@ a {
   font-weight: 700;
   font-size: 35px;
   line-height: 100%;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.04215em;
   color: #000000;
 }
 
@@ -245,7 +251,7 @@ a {
   font-family: "Inter";
   font-style: normal;
   line-height: 100%;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04215em;
   color: #696969;
   font-weight: 600;
 }
@@ -359,4 +365,23 @@ a {
 
 .overflow---y {
   overflow-y: hidden;
+}
+
+.variant {
+  padding: 10px;
+  border-radius: 100px;
+  background: #ababab;
+  color: #000000;
+  border: none;
+  cursor: pointer;
+}
+
+.variant:hover,
+.variant.selected {
+  background: #696969;
+}
+
+.variant-options {
+  display: flex;
+  gap: 10px;
 }
